@@ -32,8 +32,11 @@ app = {
   $components: [
     CM({
       _out: function(res) {
-        var json = JSON.stringify(to_cell.html(res), null, 2);
-        document.querySelector("#output")._in(json); 
+        try {
+          var json = JSON.stringify(to_cell.html(res), null, 2);
+          document.querySelector("#output")._in(json); 
+        } catch (e) {
+        }
       },
       options: { mode: "xml" },
       style: { width: "33%", height: "100%" }
@@ -50,16 +53,19 @@ app = {
       style: { width: "33%", height: "100%", overflow: "auto" },
       $components: [{
         id: "cell",
+        _genes: [],
         $components: [],
         _in: function(genes) {
-          genes = genes.filter(function(gene) {
-            return !gene.$type || gene.$type != "#text";
-          }).map(function(gene) {
-            var new_gene = gene;
-            delete new_gene.$cell;
-            return new_gene;
-          })
-          this.$cell({ $cell: true, $components: genes })
+          try {
+            var self = this;
+            this.$components = genes.filter(function(gene) {
+              return !gene.$type || gene.$type != "#text";
+            }).map(function(gene) {
+              var new_gene = gene;
+              delete new_gene.$cell;
+              return new_gene;
+            })
+          } catch (e) { }
         }
       }]
     }
