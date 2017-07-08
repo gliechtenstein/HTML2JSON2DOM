@@ -3,6 +3,8 @@
 A notebook that turns HTML => Cell => DOM Edit
 Add topics
 
+<img src="./html2json2dom.gif">
+
 # Built With
 
 1. cell: https://github.com/intercellular/cell
