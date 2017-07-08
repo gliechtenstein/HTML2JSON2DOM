@@ -1,6 +1,6 @@
-# HTML to Cell
+# HTML to JSON to DOM
 
-A notebook that turns HTML => JSON => DOM
+A notebook that turns HTML => JSON => DOM, powered by Cell.js
 
 # Built With
 
