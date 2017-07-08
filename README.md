@@ -13,6 +13,6 @@ Add topics
 
 There are 3 columns
 
-*             | Column 1 | Column 2 | Column3
---------------|----------|----------|-----------
-What it does  | enter HTML | turn HTML from column 1 into Cell | turn cell from column 2 into DOM
+|              | Column 1 | Column 2 | Column 3
+|--------------|------------|----------|-----------
+|What it does  | input HTML | HTML to Cell | Cell to DOM
