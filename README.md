@@ -1,7 +1,6 @@
-# HTML to Cell
+# HTML to JSON to DOM
 
-A notebook that turns HTML => Cell => DOM Edit
-Add topics
+A notebook that turns HTML => JSON => DOM, powered by Cell.js
 
 <img src="./html2json2dom.gif">
 
