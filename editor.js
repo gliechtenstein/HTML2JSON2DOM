@@ -25,7 +25,14 @@ CM = function(gene) {
           if(self._out) self._out(self._ed.getValue())
         })
       } catch (e) {}
-      if(self._out) self._out(self._ed.getValue())
+      if(gene.value) {
+        self._ed.setValue(gene.value);
+        if(self._out) {
+          setTimeout(function(){
+            self._out(gene.value);
+          },0)
+        }
+      }
     }
   }
 }
