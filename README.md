@@ -1,7 +1,6 @@
 # HTML to Cell
 
-A notebook that turns HTML => Cell => DOM Edit
-Add topics
+A notebook that turns HTML => JSON => DOM
 
 # Built With
 
