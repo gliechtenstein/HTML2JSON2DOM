@@ -1,0 +1,69 @@
+<html>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.css" rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/neo.css' rel='stylesheet'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.27.4/mode/xml/xml.min.js"></script>
+
+<script src='https://tojson.co/node_modules/jsonlint/lib/jsonlint.js'></script>
+<script src='https://tojson.co/node_modules/codemirror/addon/lint/lint.js'></script>
+<script src='https://tojson.co/node_modules/codemirror/addon/lint/javascript-lint.js'></script>
+<script src='https://tojson.co/node_modules/codemirror/addon/lint/json-lint.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/javascript/javascript.js"></script>
+<script src="https://www.celljs.org/cell.js"></script>
+<style>
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+</style>
+<script src="./editor.js"></script>
+<script src="./to_cell.webpacked.js"></script>
+<script>
+app = {
+  $cell: true,
+  $type: "body",
+  style: {
+    display: "flex",
+    flexDirection: "row",
+    margin: 0,
+    padding: 0
+  },
+  $components: [
+    CM({
+      _out: function(res) {
+        var json = JSON.stringify(to_cell.html(res), null, 2);
+        document.querySelector("#output")._in(json); 
+      },
+      options: { mode: "xml" },
+      style: { width: "33%", height: "100%" }
+    }),
+    CM({
+      id: "output",
+      _out: function(res) {
+        if(res && res.length > 0) document.querySelector("#cell")._in(JSON.parse(res));
+      },
+      options: { mode: "application/json" },
+      style: { width: "33%", height: "100%" }
+    }),
+    {
+      style: { width: "33%", height: "100%", overflow: "auto" },
+      $components: [{
+        id: "cell",
+        $components: [],
+        _in: function(genes) {
+          genes = genes.filter(function(gene) {
+            return !gene.$type || gene.$type != "#text";
+          }).map(function(gene) {
+            var new_gene = gene;
+            delete new_gene.$cell;
+            return new_gene;
+          })
+          this.$cell({ $cell: true, $components: genes })
+        }
+      }]
+    }
+  ]
+}
+</script>
+</html>
