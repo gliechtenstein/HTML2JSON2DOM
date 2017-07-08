@@ -1,8 +1,11 @@
-# HTML to JSON to DOM
+# HTML to Cell
 
-A notebook that turns HTML => JSON => DOM, powered by Cell.js
+A notebook that turns HTML => Cell => DOM Edit
+Add topics
 
 <img src="./html2json2dom.gif">
+<br>
+<img src="./bootstrap.gif">
 
 # Built With
 
