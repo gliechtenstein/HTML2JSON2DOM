@@ -11,6 +11,10 @@ A notebook that turns HTML => JSON => DOM, powered by Cell.
 <br>
 <img src="./bootstrap.gif">
 
+# Demo
+
+Check out the demo [https://gliechtenstein.github.io/HTML2JSON2DOM/](https://gliechtenstein.github.io/HTML2JSON2DOM/)
+
 # Built With
 
 1. cell: https://github.com/intercellular/cell
